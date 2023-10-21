@@ -6,7 +6,8 @@ import universidad.pkg2.accesoDatos.AlumnoData;
 import universidad.pkg2.accesoDatos.MateriaData;
 import universidad.pkg2.entidades.Alumno;
 import universidad.pkg2.entidades.Materia;
-
+import universidad.pkg2.accesoDatos.InscripcionData;
+import universidad.pkg2.entidades.Inscripcion;
 public class Universidad2 {
 
    
@@ -81,7 +82,7 @@ public class Universidad2 {
 //        Materia materiaEncontrada = mat.buscarMateria(10);
 //        System.out.println(" Nombre : " + materiaEncontrada.getNombre());
 //        System.out.println(" Año : " + materiaEncontrada.getAnioMateria());
-
+//
 
 
 //            MateriaData mat = new MateriaData();
@@ -92,7 +93,7 @@ public class Universidad2 {
 //            System.out.println("-------------------------------------------------------------------");
 //        }
 
-
+//
 //           MateriaData mat = new MateriaData();
 //        for (Materia materia :mat.listarMateriasBajas()) {
 //            System.out.println(" Id de materia : " + materia.getIdMateria());
@@ -100,10 +101,63 @@ public class Universidad2 {
 //            System.out.println("Año de la materia : " + materia.getAnioMateria());
 //            System.out.println("-------------------------------------------------------------------");
 //        }
-        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
        
-
-
+        
+        
+        //DE ACA PARA ABAJO ES LA PRUEBA DE NORMA
+//          AlumnoData alum = new AlumnoData();
+// MateriaData mat = new MateriaData();
+// InscripcionData ins = new InscripcionData();
+// Alumno Lara = alum.buscarAlumno(2);
+// Materia asig = mat.buscarMateria(2);
+// Inscripcion inscp= new Inscripcion(9, Lara ,asig);
+//// ins.guardarInscripcion(inscp);
+//// ins.modificarNota(6, 5, 4);
+// ins.borrarInscripcion(2, 2);
+////     
+// AlumnoData ad= new AlumnoData();
+// MateriaData md=new MateriaData();
+// InscripcionData id= new InscripcionData();
+//           
+// Alumno Mario=ad.buscarAlumno(8);
+// Materia mate=md.buscarMateria(2);
+// Inscripcion insc=new Inscripcion(8,Mario, mate);
+//            id.guardarInscripcion(insc);
+//
+//           id.modificarNota(9,8,2);
+//
+//
+//             id.borrarInscripcion(8,2);
+//            
+//            
+// for(Inscripcion inscripcion:id.obtenerInscripciones()){
+// System.out.println("id"+ inscripcion.getIdInscripcion());
+// System.out.println("Apellido"+ inscripcion.getAlumno().getApellido());
+// System.out.println("Materia"+ inscripcion.getMateria());
+//                
+//                
+// }
+//
+//            
+// for( Materia materia:id.obtenerMateriasNOCursadas(8)){
+// System.out.println("nombre " + materia.getNombre());
+//        
+// }   
+  
+ 
+ 
+            
+// for (Inscripcion cursadas:id.obtenerInscripciones(8)){
+// System.out.println("materias cursadas: " + cursadas.getMateria());
+         
+    
+    
     }
     
-}
+    }
+    
+    
+    
+
+    
