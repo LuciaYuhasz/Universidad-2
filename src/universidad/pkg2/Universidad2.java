@@ -93,15 +93,17 @@ public class Universidad2 {
 //        }
 
 
-           MateriaData mat = new MateriaData();
-        for (Materia materia :mat.listarMateriasBajas()) {
-            System.out.println(" Id de materia : " + materia.getIdMateria());
-            System.out.println(" Nombre de la Materia : " + materia.getNombre());
-            System.out.println("Año de la materia : " + materia.getAnioMateria());
-            System.out.println("-------------------------------------------------------------------");
-        }
+//           MateriaData mat = new MateriaData();
+//        for (Materia materia :mat.listarMateriasBajas()) {
+//            System.out.println(" Id de materia : " + materia.getIdMateria());
+//            System.out.println(" Nombre de la Materia : " + materia.getNombre());
+//            System.out.println("Año de la materia : " + materia.getAnioMateria());
+//            System.out.println("-------------------------------------------------------------------");
+//        }
         
        
+
+
     }
     
 }
