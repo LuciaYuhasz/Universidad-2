@@ -1,19 +1,13 @@
 
 package universidad.pkg2.accesoDatos;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import javax.swing.JOptionPane;
-
 import universidad.pkg2.entidades.Alumno;
 import universidad.pkg2.entidades.Inscripcion;
 import universidad.pkg2.entidades.Materia;
-
-
 
 
 public class InscripcionData {
@@ -29,7 +23,6 @@ public class InscripcionData {
 
     public void guardarInscripcion(Inscripcion inscp){ // corre 
         String sql = " INSERT INTO inscripcion (idAlumno, idMateria,nota) VALUES (?,?,?) ";
-
          try {
              PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,inscp.getAlumno().getIdAlumno());
@@ -47,6 +40,8 @@ public class InscripcionData {
          }
     }
     
+    
+    
     public void modificarNotas(int idAlumno, int idMateria, double nota){ //corre
         String sql= " UPDATE inscripcion  SET nota =? "
                + " WHERE idAlumno=? AND idMateria=? ";
@@ -56,7 +51,6 @@ public class InscripcionData {
              ps.setInt(2, idAlumno);
              ps.setInt(3, idMateria);
               int modificado=ps.executeUpdate();
-           
             if (modificado>0) {
                 JOptionPane.showMessageDialog(null,"Nota modificada");
             }
@@ -65,6 +59,8 @@ public class InscripcionData {
              JOptionPane.showMessageDialog(null,"Error al ingresar a la tabla inscripcion " + ex.getMessage());
          }
     }
+    
+    
     
     
     public void borrarInscripcion(int idAlumno,int idMateria){ //corre
@@ -84,15 +80,15 @@ public class InscripcionData {
     }
 
     
+    
+    
     public List<Inscripcion> obtenerInscipciones(){ // corre perfecto
     
          ArrayList<Inscripcion> listaInscripcion =new ArrayList<>();
          String sql=  " SELECT * FROM inscripcion ";
           try {
-         
          PreparedStatement ps= con.prepareStatement(sql);
          ResultSet rs=ps.executeQuery();
-         
          while(rs.next()){
              Inscripcion ins= new Inscripcion();
              ins.setIdInscripcion(rs.getInt("idInscripcion")) ;
@@ -102,15 +98,14 @@ public class InscripcionData {
              ins.setMateria(mat);
              ins.setNota(rs.getDouble("nota"));
              listaInscripcion.add(ins);
-             
          }
          ps.close();
-         
      } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null,"Error al conectar con tabla de inscripcion"+ ex.getMessage());
   }
      return listaInscripcion ;
     }
+    
     
     
     public List<Inscripcion>obtenerInscripcionesPorAlumno(int idAlumno){ // corre
@@ -131,19 +126,17 @@ public class InscripcionData {
              insc.setMateria(mat);
              insc.setNota(rs.getDouble("nota"));
              cursadas.add(insc);  
-             
          }
-         
          ps.close();
      } catch (SQLException ex) {
          JOptionPane.showMessageDialog(null,"Error al acceder a la tabla inscripcion" + ex.getMessage());
      }
-     
      return cursadas;
  }
     
     
-          public List<Materia> obternerMateriaCursadas(int idAlumno){ // corre
+    
+    public List<Materia> obternerMateriaCursadas(int idAlumno){ // corre
          ArrayList<Materia> listaMateria = new ArrayList<>();
          String sql= " SELECT inscripcion.idMateria ,nombre,año FROM inscripcion, "
                  + " materia WHERE inscripcion.idMateria = materia.idMateria "
@@ -163,15 +156,14 @@ public class InscripcionData {
          
      } catch (SQLException ex) {
           JOptionPane.showMessageDialog(null,"Error al conectar con tabla de inscripcion"+ ex.getMessage());
- 
      }
      return listaMateria;
      }
       
       
       
- public List<Materia> obternerMateriaNoCursadas(int idAlumno){ // corre
-    //N
+    public List<Materia> obternerMateriaNoCursadas(int idAlumno){ // corre
+    
          ArrayList<Materia> listMatNoCursa = new ArrayList<>();
          String sql= " SELECT * FROM materia WHERE estado = 1 AND idMateria NOT in "
                  + " (SELECT  idMateria  FROM inscripcion WHERE  idAlumno = ? )";
@@ -190,17 +182,17 @@ public class InscripcionData {
          
      } catch (SQLException ex) {
           JOptionPane.showMessageDialog(null,"Error al conectar con tabla de inscripcion"+ ex);
- 
      }
      return listMatNoCursa;
     }
 
+    
+    
    public List<Alumno> obternerAlumnoPorMateria(int idMateria){ // NO CORRE VER
-    //N
-         ArrayList<Alumno> alumMatNoCursa = new ArrayList<>();
+    
+         ArrayList<Alumno> alumPorMateria = new ArrayList<>();
         String sql = "  SELECT a.idAlumno, dni, nombre, apellido, fechaNac, estado "
                 + " FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
-    
           try {
          PreparedStatement ps = con.prepareStatement(sql);
          ps.setInt(1, idMateria);
@@ -210,20 +202,18 @@ public class InscripcionData {
              alumno.setIdAlumno(rs.getInt("idAlumno"));
              alumno.setNombre(rs.getNString("nombre"));
              alumno.setApellido(rs.getNString("apellido"));
+             alumno.setDni(rs.getInt("dni"));
              alumno.setFechaNac(rs.getDate("fechaNac").toLocalDate());
-             alumno.setEstado(rs.getBoolean("estado"));
+             alumno.setEstado(true);
             // alumno.setActivo(rs.getBoolean("estado"));//----no funciona------
-             alumMatNoCursa.add(alumno);
-             
+             alumPorMateria.add(alumno);
           }
          ps.close();
          
      } catch (SQLException ex) {
           JOptionPane.showMessageDialog(null,"Error al conectar con tabla de inscripcion"+ ex);
- 
      }
-     return alumMatNoCursa;
-     
+     return alumPorMateria;
     }
    
 }

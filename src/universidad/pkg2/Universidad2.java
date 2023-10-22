@@ -85,13 +85,13 @@ public class Universidad2 {
 //
 
 
-            MateriaData mat = new MateriaData();
-        for (Materia materia :mat.listarMateriasActivas()) {
-            System.out.println(" Id de materia : " + materia.getIdMateria());
-            System.out.println(" Nombre de la Materia : " + materia.getNombre());
-            System.out.println("Año de la materia : " + materia.getAnioMateria());
-            System.out.println("-------------------------------------------------------------------");
-        }
+//            MateriaData mat = new MateriaData();
+//        for (Materia materia :mat.listarMateriasActivas()) {
+//            System.out.println(" Id de materia : " + materia.getIdMateria());
+//            System.out.println(" Nombre de la Materia : " + materia.getNombre());
+//            System.out.println("Año de la materia : " + materia.getAnioMateria());
+//            System.out.println("-------------------------------------------------------------------");
+//        }
 
 //
 //           MateriaData mat = new MateriaData();
@@ -166,10 +166,16 @@ public class Universidad2 {
 
 
 
- // falta solo esta funcion
-//      for (Materia materia: id.obternerAlumnoPorMateria(7)) { 
-//            System.out.println("nombre " + materia.getNombre());
-//        }  
+
+ 
+      for (Alumno alumno: id.obternerAlumnoPorMateria(5)) { // corre perfecto
+            System.out.println("ID : " + alumno.getIdAlumno());
+            System.out.println("Apellido :  " + alumno.getApellido());
+            System.out.println("Nombre  : " + alumno.getNombre());
+            System.out.println("DNI : " + alumno.getDni());
+            System.out.println("Estado : " + alumno.isEstado());
+            System.out.println("*****************************************************");
+        }  
         
       
     }
