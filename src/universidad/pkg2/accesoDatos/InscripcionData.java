@@ -27,8 +27,8 @@ public class InscripcionData {
     }
     
 
-    public void guardarInscripcion(Inscripcion inscp){ 
-        String sql = " INSERT INTO inscripcion (idAlumno, idMateria,nota) VALUES (?,?,?)";
+    public void guardarInscripcion(Inscripcion inscp){ // corre 
+        String sql = " INSERT INTO inscripcion (idAlumno, idMateria,nota) VALUES (?,?,?) ";
 
          try {
              PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -192,11 +192,10 @@ public class InscripcionData {
           JOptionPane.showMessageDialog(null,"Error al conectar con tabla de inscripcion"+ ex);
  
      }
-     return listaMateria;
-     }
-         
-     
-   public List<Alumno> obternerAlumnoPorMateria(int idMateria){
+     return listMatNoCursa;
+    }
+
+   public List<Alumno> obternerAlumnoPorMateria(int idMateria){ // NO CORRE VER
     //N
          ArrayList<Alumno> alumMatNoCursa = new ArrayList<>();
         String sql = "  SELECT a.idAlumno, dni, nombre, apellido, fechaNac, estado "
